@@ -52,10 +52,10 @@ Drop a `domain.md` file in your project root to make every agent smarter about y
 
 | Command | What it does |
 |---------|-------------|
-| `/ensemble:design` | Soft Launch session — idea through all 5 agents, produces shippable V1 plan |
-| `/ensemble:critique` | Run all 5 agents on an existing proposal in Soft Launch mode |
+| `/ensemble:design` | Soft Launch session — idea through 5 core agents (UX, PM, CPO, Engineer, Roadmap), produces shippable V1 plan |
+| `/ensemble:critique` | Run 5 core agents on an existing proposal in Soft Launch mode |
 | `/ensemble:retro` | Retrospective on a shipped V1 — capture learnings, validate assumptions, inform next steps |
-| `/ensemble:full-launch` | Expand a shipped V1 into Full Launch — safety, research, GTM, expanded roadmap |
+| `/ensemble:full-launch` | Expand a shipped V1 into Full Launch — re-evaluates with 5 core agents, then adds 3 specialists (Safety, Research, GTM) |
 | `/ensemble:ux-review` | Standalone UX Designer review |
 | `/ensemble:tech-review` | Standalone Lead Engineer technical review |
 
