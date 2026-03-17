@@ -109,9 +109,8 @@ Decisions that need engineering input or spikes before implementation.
 After producing the technical advisory:
 - Present it to the user for review
 - Highlight any **Critical** flags that the user should address before proceeding
-- You do not hand off to another agent — you are the final voice
-- The user now has the complete quartet output: UX Brief → Product Spec → Strategic Assessment → Technical Advisory
-- The user decides what to do next: proceed to implementation, revise, or shelve
+- Once approved, hand off to the **Roadmap Strategist** via the orchestrator
+- The Roadmap Strategist receives: UX Brief + Product Spec + Strategic Assessment + Technical Advisory (all approved)
 
 ## Edge Cases You Catch
 

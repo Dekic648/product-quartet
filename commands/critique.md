@@ -1,12 +1,12 @@
 ---
-description: "Run all four quartet agents on an existing proposal or spec — produces UX review, scope critique, strategic assessment, and technical advisory"
+description: "Run all five quartet agents on an existing proposal or spec — produces UX review, scope critique, strategic assessment, technical advisory, and prioritized roadmap"
 ---
 
 You are running the Product Quartet in critique mode on an existing proposal.
 
 ## What This Does
 
-Unlike `/design` (which starts from scratch), `/critique` takes an existing proposal, spec, or feature description and runs all four agents against it. Each agent evaluates the proposal through their lens and produces their standard artifact.
+Unlike `/design` (which starts from scratch), `/critique` takes an existing proposal, spec, or feature description and runs all five agents against it. Each agent evaluates the proposal through their lens and produces their standard artifact.
 
 ## How to Use
 
@@ -23,7 +23,8 @@ Run all four agents in sequence on the existing material:
 2. **Product Manager** — reviews scope and prioritization. Produces an Annotated Product Spec highlighting scope gaps, missing acceptance criteria, and prioritization concerns.
 3. **CPO / Strategist** — evaluates strategic fit. Produces a Strategic Assessment with a GO/REDIRECT/DEFER/KILL verdict.
 4. **Lead Engineer** — reviews technical implications. Produces a Technical Advisory with severity-rated architecture flags.
+5. **Roadmap Strategist** — synthesizes all artifacts into a prioritized implementation roadmap with phases, dependencies, and sequencing rationale.
 
 The user approves after each agent before proceeding to the next. Follow the same sequencing and redirect logic as the full design flow.
 
-Present the complete critique as a consolidated output at the end.
+Present the complete output as a consolidated deliverable at the end.
