@@ -61,6 +61,14 @@ Simulate these 6 users. Each has a distinct profile and a specific task. For eac
 - **Tests:** Responsive layout, touch targets, sidebar collapse, readability at small widths, navigation usability
 - **What FAILS:** Overlapping elements, tiny buttons, horizontal scroll, panels that don't stack
 
+### Persona 7: The UI Purist (ex-Apple designer)
+- **Profile:** 15 years in product design. Spent 6 years at Apple on consumer apps. Obsessive about spacing, alignment, typography hierarchy, visual rhythm, and micro-interactions. Judges every pixel. Thinks in 8px grids. Believes if a UI needs a label, it's already failed
+- **Task:** "Open the product and critique every visual decision — spacing, typography, color usage, alignment, visual hierarchy, information density, consistency, and polish"
+- **Tests:** Typographic scale consistency, spacing/padding uniformity, color contrast ratios, visual weight balance, alignment grid adherence, component consistency (do all buttons look the same?), whitespace usage, border/shadow consistency, label hierarchy, empty space intentionality
+- **What they HATE:** Inconsistent padding, orphaned labels, too many font sizes, borders competing with shadows, misaligned elements, colors that don't belong to a system, controls that look different in different contexts, anything that feels "cobbled together"
+- **What they LOVE:** Restraint. Consistency. Rhythm. Breathing room. Typography that does the work. Invisible structure. "This looks like one person designed it in one sitting"
+- **How they critique:** They don't just say "this looks bad." They say "the 14px subtitle at 400 weight doesn't create enough contrast with the 13px body text — either make it 16px/600 or remove it." Every critique has a specific observation and a specific fix
+
 ## How to Test
 
 For each persona:
@@ -89,14 +97,82 @@ For each button, link, input, or control the user would touch:
 - For previews: does what's shown match what's exported?
 - For saved state: does it persist and restore correctly?
 
+## Usability Metrics Framework (ISO 9241-11)
+
+Every persona is scored on three dimensions. These scores quantify usability — they're not opinions, they're measurements derived from tracing actual code paths.
+
+### 1. Effectiveness (Did they finish? How many errors?)
+
+**Completion Rate:** Can the persona complete their task end-to-end by following the code paths?
+- Score: 0-100% (percentage of task steps that can be completed without hitting a blocker)
+- Benchmark: 78% is average across industry
+
+**Error Count:** How many errors, dead-ends, silent failures, or wrong states would the persona encounter?
+- Score: Raw count (0 = flawless, 1-2 = acceptable, 3+ = problematic)
+- Classify each: Critical (blocks task) / Friction (slows down) / Cosmetic (annoying but passable)
+
+### 2. Efficiency (How much effort? How many steps?)
+
+**Step Count:** How many clicks/actions from entry point to task completion?
+- Score: Raw count. Compare to theoretical minimum (fewest possible clicks)
+- Formula: Efficiency = minimum_steps / actual_steps × 100%
+
+**Wasted Effort:** How many steps lead to dead-ends, backtracking, or confusion?
+- Score: Count of unnecessary actions (wrong tabs, hidden features user must discover, unintuitive navigation)
+
+### 3. Satisfaction (How does it feel?)
+
+Since we're simulating users (not surveying real ones), score satisfaction based on observable UX signals:
+
+**Clarity:** Does the persona understand what to do at each step without help?
+- Score: 1-5 (1 = "completely lost" → 5 = "self-evident at every step")
+
+**Confidence:** Would the persona trust this tool for professional work?
+- Score: 1-5 (1 = "feels like a prototype" → 5 = "would put my name on this output")
+
+**Delight:** Is there a moment that exceeds expectations?
+- Score: 1-5 (1 = "purely functional" → 5 = "wow, that's clever")
+
+### Composite Usability Score
+
+For each persona, compute:
+```
+Usability Score = (Effectiveness × 0.4) + (Efficiency × 0.3) + (Satisfaction × 0.3)
+```
+
+Where:
+- Effectiveness = Completion Rate (0-100)
+- Efficiency = (minimum_steps / actual_steps) × 100
+- Satisfaction = average of Clarity + Confidence + Delight, scaled to 0-100
+
+Final score is 0-100. Benchmarks:
+- 90+ = Excellent (Apple-level polish)
+- 75-89 = Good (professional, shippable)
+- 60-74 = Acceptable (works but needs iteration)
+- Below 60 = Poor (significant usability problems)
+
 ## Artifact: User Test Report
 
-Produce a structured report with findings from all 6 personas.
+Produce a structured report with findings from all personas.
 
 ### Format
 
 ```markdown
 # User Test Report: [Product/Feature Name]
+
+## Usability Scorecard
+
+| Persona | Effectiveness ||| Efficiency || Satisfaction ||| Score |
+| | Completion | Errors | | Steps (actual/min) | Efficiency | Clarity | Confidence | Delight | |
+|---------|------------|--------|--|---------------------|------------|---------|------------|---------|-------|
+| First-Time Visitor | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| Rushing Consultant | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| Non-Technical User | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| Power User         | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| Report Builder     | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| Mobile User        | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| UI Purist          | %  | N | | N/N | % | /5 | /5 | /5 | /100 |
+| **AVERAGE**        | **%** | **N** | | | **%** | **/5** | **/5** | **/5** | **/100** |
 
 ## Test Summary
 | Persona | Task | Result | Issues Found |
@@ -107,6 +183,7 @@ Produce a structured report with findings from all 6 personas.
 | Power User | Full customization flow | Pass/Fail/Partial | N |
 | Report Builder | Assemble 4-chart report → PPTX | Pass/Fail/Partial | N |
 | Mobile User | Browse and view on tablet | Pass/Fail/Partial | N |
+| UI Purist | Critique every visual decision | Pass/Fail/Partial | N |
 
 ## Critical Issues (blocks the task)
 Issues that prevent a persona from completing their task.
